@@ -1,32 +1,26 @@
 package program;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import static Constants.Constant.breakCase;
+import static program.CodeMenu.stringMenu;
 
 public class StringCode {
 
     // Referenced from https://jenkov.com/tutorials/java/strings.html
 
-    public void showAllStringCodeMenuAndProcess(){
+    public void showAllStringCodeMenuAndProcess() {
         System.out.println("==Hello these are String programs==");
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do {
-            System.out.println("1. Get String in Literal.");
-            System.out.println("2. Get String with new keyword.");
-            System.out.println("3. Escaped characters.");
-            System.out.println("4. Text block.");
-            System.out.println("5. Default Concatenating by + operator.");
-            System.out.println("6. Default Concatenating by method.");
-            System.out.println("7. Length of String");
-            System.out.println("8. Get substring of a given string");
-            System.out.println("9. Search in the String with help of indexOf substring");
-            System.out.println("10. Search in the String with help of regular exp. operator like.");
-
-            System.out.println(breakCase +". Exit.");
+            for (Map.Entry<Integer, String> entry: stringMenu.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+            System.out.println(breakCase + " " + "Exit");
             option = selectOptionAndProcess(sc.nextInt(), sc);
-        } while (option != 100);
+        } while (option != breakCase);
     }
 
     public int selectOptionAndProcess(int option, Scanner sc) {
